@@ -6,7 +6,31 @@ import { LinearGradient } from "expo-linear-gradient";
 const ligthModeEqualBtnGradientColors = ["#DFA64E", "#C09C63", "transparent"];
 const darkModeEqualBtnGradientColors = ["#BD9960", "black"];
 
-const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
+const ButtonsField = ({
+  isDarkMode,
+  onDigit,
+  onPlus,
+  onDivide,
+  onMinus,
+  onMultiply,
+  onEquals,
+  onClear,
+  onPercent,
+  onPoint,
+  onOppositeSign,
+}: {
+  isDarkMode: boolean;
+  onDigit: (digit: string) => void;
+  onPlus: () => void;
+  onDivide: () => void;
+  onMinus: () => void;
+  onMultiply: () => void;
+  onEquals: () => void;
+  onClear: () => void;
+  onPercent: () => void;
+  onPoint: () => void;
+  onOppositeSign: () => void;
+}) => {
   return (
     <View style={styles.container}>
       <View style={styles.buttonRow}>
@@ -14,6 +38,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
           buttonStyle={
             isDarkMode ? styles.buttonStyles : styles.buttonStylesLightMode
           }
+          onPress={onClear}
           containerStyle={styles.buttonContainer}
           title="AC"
           titleStyle={
@@ -22,6 +47,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
         />
 
         <Button
+          onPress={onOppositeSign}
           buttonStyle={
             isDarkMode ? styles.buttonStyles : styles.buttonStylesLightMode
           }
@@ -32,6 +58,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
           }
         />
         <Button
+          onPress={onPercent}
           buttonStyle={
             isDarkMode ? styles.buttonStyles : styles.buttonStylesLightMode
           }
@@ -45,6 +72,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
           buttonStyle={
             isDarkMode ? styles.buttonStyles : styles.buttonStylesLightMode
           }
+          onPress={onDivide}
           containerStyle={styles.buttonContainer}
           title="/"
           titleStyle={
@@ -54,6 +82,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
       </View>
       <View style={styles.buttonRow}>
         <Button
+          onPress={() => onDigit("7")}
           buttonStyle={
             isDarkMode ? styles.buttonStyles : styles.buttonStylesLightMode
           }
@@ -64,6 +93,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
           }
         />
         <Button
+          onPress={() => onDigit("8")}
           buttonStyle={
             isDarkMode ? styles.buttonStyles : styles.buttonStylesLightMode
           }
@@ -74,6 +104,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
           }
         />
         <Button
+          onPress={() => onDigit("9")}
           buttonStyle={
             isDarkMode ? styles.buttonStyles : styles.buttonStylesLightMode
           }
@@ -84,6 +115,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
           }
         />
         <Button
+          onPress={onMultiply}
           buttonStyle={
             isDarkMode ? styles.buttonStyles : styles.buttonStylesLightMode
           }
@@ -96,6 +128,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
       </View>
       <View style={styles.buttonRow}>
         <Button
+          onPress={() => onDigit("4")}
           buttonStyle={
             isDarkMode ? styles.buttonStyles : styles.buttonStylesLightMode
           }
@@ -106,6 +139,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
           }
         />
         <Button
+          onPress={() => onDigit("5")}
           buttonStyle={
             isDarkMode ? styles.buttonStyles : styles.buttonStylesLightMode
           }
@@ -116,6 +150,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
           }
         />
         <Button
+          onPress={() => onDigit("6")}
           buttonStyle={
             isDarkMode ? styles.buttonStyles : styles.buttonStylesLightMode
           }
@@ -126,6 +161,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
           }
         />
         <Button
+          onPress={onMinus}
           buttonStyle={
             isDarkMode ? styles.buttonStyles : styles.buttonStylesLightMode
           }
@@ -138,6 +174,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
       </View>
       <View style={styles.buttonRow}>
         <Button
+          onPress={() => onDigit("1")}
           buttonStyle={
             isDarkMode ? styles.buttonStyles : styles.buttonStylesLightMode
           }
@@ -148,6 +185,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
           }
         />
         <Button
+          onPress={() => onDigit("2")}
           buttonStyle={
             isDarkMode ? styles.buttonStyles : styles.buttonStylesLightMode
           }
@@ -158,6 +196,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
           }
         />
         <Button
+          onPress={() => onDigit("3")}
           buttonStyle={
             isDarkMode ? styles.buttonStyles : styles.buttonStylesLightMode
           }
@@ -168,6 +207,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
           }
         />
         <Button
+          onPress={onPlus}
           buttonStyle={
             isDarkMode ? styles.buttonStyles : styles.buttonStylesLightMode
           }
@@ -180,6 +220,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
       </View>
       <View style={styles.buttonRow}>
         <Button
+          onPress={() => onDigit("0")}
           buttonStyle={
             isDarkMode ? styles.buttonStyles : styles.buttonStylesLightMode
           }
@@ -190,6 +231,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
           }
         />
         <Button
+          onPress={onPoint}
           buttonStyle={
             isDarkMode ? styles.buttonStyles : styles.buttonStylesLightMode
           }
@@ -214,7 +256,7 @@ const ButtonsField = ({ isDarkMode }: { isDarkMode: boolean }) => {
               ? darkModeEqualBtnGradientColors
               : ligthModeEqualBtnGradientColors,
           }}
-          onPress={() => {}}
+          onPress={onEquals}
         >
           =
         </Button>
